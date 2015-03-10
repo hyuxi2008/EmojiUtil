@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Library</string>
+    <string name="bottom_round">底部小圆点</string>
+    <string name="emoji_item_desc">emoji表情</string>
+</resources>

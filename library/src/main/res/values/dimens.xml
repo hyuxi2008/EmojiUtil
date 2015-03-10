@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="point_radius">3dp</dimen>
+    <dimen name="point_margin">4dp</dimen>
+</resources>
