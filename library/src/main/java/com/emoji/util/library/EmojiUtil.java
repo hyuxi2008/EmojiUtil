@@ -23,21 +23,17 @@ public class EmojiUtil {
      */
     public static int[] emojiId = new int[0];
 
+    /**
+     * 设置图片的缩放比例,解决表情在{@link android.widget.TextView} {@link android.widget.EditText} 中显示过大的问题
+     * 缩放比例,原来的是现在的多少倍
+     */
+    public static int mPercent = 2;
+
     private final Context context;
-    private int mPercent = 2;
 
     public EmojiUtil(Context context) {
         this.context = context;
         spannableFactory = Spannable.Factory.getInstance();
-    }
-
-    /**
-     * 设置图片的缩放比例,解决表情在{@link android.widget.TextView} {@link android.widget.EditText} 中显示过大的问题
-     *
-     * @param percent 缩放比例,原来的是现在的多少倍
-     */
-    public void setPercent(int percent) {
-        mPercent = percent;
     }
 
     /**

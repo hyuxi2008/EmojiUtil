@@ -15,7 +15,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
+        initEmojiUtil();
         setContentView(R.layout.activity_main);
         final EmojiTextView mEmojiTextView = (EmojiTextView) findViewById(R.id.ett_EmojiTextView);
 //        mEmojiTextView.setEmojiText("你好啊[可爱]hh[ok][可爱]");
@@ -50,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void init() {
+    public void initEmojiUtil() {
         EmojiUtil.emojiId = new int[]{
                 R.mipmap.d_zuiyou,
                 R.mipmap.d_hehe,

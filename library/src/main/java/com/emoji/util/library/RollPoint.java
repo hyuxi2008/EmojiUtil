@@ -43,9 +43,9 @@ public class RollPoint extends LinearLayout {
 
     private void initView() {
         setPoint(
-                new BitmapDrawable(getResources(), getRoundBitmap(getResources().getDimensionPixelOffset(R.dimen.point_radius),
+                new BitmapDrawable(getResources(), getRoundBitmap(getResources().getDimensionPixelOffset(R.dimen.emoji_point_radius),
                         0xffb3b3b3)),
-                new BitmapDrawable(getResources(), getRoundBitmap(getResources().getDimensionPixelOffset(R.dimen.point_radius),
+                new BitmapDrawable(getResources(), getRoundBitmap(getResources().getDimensionPixelOffset(R.dimen.emoji_point_radius),
                         0xff3791ff)));
     }
 
@@ -74,7 +74,7 @@ public class RollPoint extends LinearLayout {
             ImageView imageView = new ImageView(getContext());
             LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(getResources().getDimensionPixelSize(R.dimen.point_margin), 0, 0, 0);
+            layoutParams.setMargins(getResources().getDimensionPixelSize(R.dimen.emoji_point_margin), 0, 0, 0);
             imageView.setLayoutParams(layoutParams);
             if (i == 0) {
                 imageView.setImageDrawable(mDotSelected);
