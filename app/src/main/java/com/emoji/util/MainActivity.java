@@ -21,6 +21,7 @@ public class MainActivity extends ActionBarActivity {
 //        mEmojiTextView.setEmojiText("你好啊[可爱]hh[ok][可爱]");
 
         final EmojiEditText mEmojiEditText = (EmojiEditText) findViewById(R.id.eet_EmojiEditText);
+
         EmojiView mEmojiView = (EmojiView) findViewById(R.id.ev_EmojiView);
         mEmojiView.setOnEmojiItemClickListener(new EmojiClickListener() {
             @Override

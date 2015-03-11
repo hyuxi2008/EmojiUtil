@@ -11,7 +11,7 @@ import android.widget.GridView;
 /**
  * Created by liujigang on 2015/3/9 0009.
  */
-public class GridViewInstance implements AdapterView.OnItemClickListener {
+public class GridViewInstance implements AdapterView.OnItemClickListener, Cloneable {
 
     private final Context mContext;
     private EmojiClickListener mListener;
@@ -61,6 +61,7 @@ public class GridViewInstance implements AdapterView.OnItemClickListener {
         });
         gridview.setOnItemClickListener(this);
     }
+
     public void setOnEmojiItemClickListener(EmojiClickListener l) {
         this.mListener = l;
     }
@@ -70,5 +71,15 @@ public class GridViewInstance implements AdapterView.OnItemClickListener {
         if (mListener != null) {
             mListener.onClick(EmojiUtil.emojiName[position + mPosition * mSize]);
         }
+
+    }
+    @Override
+    public Object clone(){
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

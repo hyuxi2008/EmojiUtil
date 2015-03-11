@@ -11,7 +11,7 @@ import android.widget.GridView;
  */
 public class ViewPagerPagerAdapter extends PagerAdapter {
 
-    private final Context mContext;
+    //    private final Context mContext;
     private final ViewGroup mViewGroup;
     private final int mSize;
     private EmojiClickListener mListener;
@@ -19,15 +19,18 @@ public class ViewPagerPagerAdapter extends PagerAdapter {
 
     public ViewPagerPagerAdapter(Context context, ViewGroup root, EmojiClickListener listener, int size) {
         super();
-        mContext = context;
+//        mContext = context;
         mViewGroup = root;
         mListener = listener;
         mSize = size;
-//        mGridViewInstance = new GridViewInstance(context);
+        mGridViewInstance = new GridViewInstance(context);
     }
 
     @Override
     public int getCount() {
+        if (mSize < 1) {
+            return 0;
+        }
         return 1 + EmojiUtil.emojiId.length / mSize;
     }
 
@@ -37,8 +40,12 @@ public class ViewPagerPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        GridView gridView = new GridViewInstance(mContext).newInstance(R.layout.emoji_gridview, mViewGroup, false, position, mSize, mListener);
+    public synchronized Object instantiateItem(ViewGroup container, int position) {
+        GridView gridView = ((GridViewInstance) mGridViewInstance.clone()).
+                newInstance(R.layout.emoji_gridview, mViewGroup, false, position, mSize, mListener);
+//        GridView gridView = new GridViewInstance(mContext).
+//                newInstance(R.layout.emoji_gridview, mViewGroup, false, position, mSize, mListener);
+
         container.addView(gridView);
         return gridView;
     }
@@ -50,8 +57,5 @@ public class ViewPagerPagerAdapter extends PagerAdapter {
 
     public void setOnEmojiItemClickListener(EmojiClickListener l) {
         mListener = l;
-        if (mGridViewInstance != null) {
-            mGridViewInstance.setOnEmojiItemClickListener(l);
-        }
     }
 }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 
 /**
@@ -21,17 +22,17 @@ public class EmojiView extends FrameLayout {
 
     public EmojiView(Context context) {
         super(context);
-//        initView();
+        initView();
     }
 
     public EmojiView(Context context, AttributeSet attrs) {
         super(context, attrs);
-//        initView();
+        initView();
     }
 
     public EmojiView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-//        initView();
+        initView();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -39,14 +40,14 @@ public class EmojiView extends FrameLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public void initView() {
+    private void initView() {
         if (!EmojiUtil.isReady()) {
             Log.e("emoji", "EmojiUtil is not initialization");
             return;
         }
         removeAllViews();
-        ViewPager viewPager = new ViewPager(getContext());
-        viewPager.setLayoutParams(new ViewPager.LayoutParams());
+        ViewPager mViewPager = new ViewPager(getContext());
+        mViewPager.setLayoutParams(new ViewPager.LayoutParams());
 
         final RollPoint rollPoint = new RollPoint(getContext());
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -57,9 +58,9 @@ public class EmojiView extends FrameLayout {
         rollPoint.setPadding(4, 4, 4, 4);
         rollPoint.setCount(EmojiUtil.emojiId.length / mSize + 1);
 
-        mViewPagerPagerAdapter = new ViewPagerPagerAdapter(getContext(), viewPager, mListener, mSize);
-        viewPager.setAdapter(mViewPagerPagerAdapter);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPagerPagerAdapter = new ViewPagerPagerAdapter(getContext(), mViewPager, mListener, mSize);
+        mViewPager.setAdapter(mViewPagerPagerAdapter);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -74,7 +75,7 @@ public class EmojiView extends FrameLayout {
             }
         });
 
-        addView(viewPager);
+        addView(mViewPager);
         addView(rollPoint);
     }
 
@@ -84,11 +85,10 @@ public class EmojiView extends FrameLayout {
     }
 
     public void setOnEmojiItemClickListener(EmojiClickListener l) {
-//        this.mListener = l;
-//        if (mViewPagerPagerAdapter != null) {
-//            mViewPagerPagerAdapter.setOnEmojiItemClickListener(l);
-//        }
-        initView(l);
+        this.mListener = l;
+        if (mViewPagerPagerAdapter != null) {
+            mViewPagerPagerAdapter.setOnEmojiItemClickListener(l);
+        }
     }
 
     public void setPageSize(int size) {
