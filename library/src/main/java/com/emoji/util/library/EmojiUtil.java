@@ -17,11 +17,12 @@ public class EmojiUtil {
     /**
      * 表情的对应的标示,顺序要和 {@link EmojiUtil#emojiId} 一一对应
      */
-    public static String[] emojiName;
+    public static String[] emojiName = new String[0];
     /**
      * 表情的资源的ID, 顺序要和 {@link EmojiUtil#emojiName} 一一对应
      */
-    public static int[] emojiId;
+    public static int[] emojiId = new int[0];
+
     private final Context context;
     private int mPercent = 2;
 
@@ -68,7 +69,8 @@ public class EmojiUtil {
     }
 
     private int indexOfValue(String value) {
-        for (int i = 0; i < emojiName.length; i++)
+        int length = emojiName.length;
+        for (int i = 0; i < length; i++)
             if (emojiName[i].equals(value))
                 return i;
         return -1;
