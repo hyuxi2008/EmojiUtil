@@ -38,6 +38,7 @@ public class EmojiView extends FrameLayout {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public EmojiView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        initView();
     }
 
     private void initView() {
