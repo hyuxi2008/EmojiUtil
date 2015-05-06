@@ -74,6 +74,9 @@ public class EmojiTextView extends TextView {
      */
     public final void setEmojiText(CharSequence text) {
         setText("");
+        if (text == null || text.length() == 0) {
+            return;
+        }
         Matcher ma;
         if (mPattern == null) {
             mPattern = Pattern.compile(mRegex, Pattern.DOTALL);
