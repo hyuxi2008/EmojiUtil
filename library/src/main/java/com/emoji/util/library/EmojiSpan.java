@@ -29,8 +29,9 @@ public class EmojiSpan extends DynamicDrawableSpan {
         Drawable drawable = null;
         try {
             drawable = mContext.getResources().getDrawable(mResourceId);
-            drawable.setBounds(0, 0, drawable.getIntrinsicWidth() / mPercent,
-                    drawable.getIntrinsicHeight() / mPercent);
+            if (drawable != null)
+                drawable.setBounds(0, 0, drawable.getIntrinsicWidth() / mPercent,
+                        drawable.getIntrinsicHeight() / mPercent);
         } catch (Exception e) {
             Log.e("sms", "Unable to find resource: " + mResourceId);
         }
